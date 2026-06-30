@@ -23,109 +23,32 @@ import NoteContext from "./NoteContext";
 //  }
 const NoteState = (props)=>{
     const notesInitial = [
-        {
-            "_id": "6a4214179680fc34238402be",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title updated 23",
-            "description": "hey this is shreyash's description updated 23",
-            "tag": "shreyashs tag",
-            "date": "2026-06-29T06:43:35.785Z",
-            "__v": 0
-        },
-        {
-            "_id": "6a4244394456a4c97e279622",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title",
-            "description": "hey this is shreyash's description",
-            "tag": "shreyashs tag",
-            "date": "2026-06-29T10:08:57.414Z",
-            "__v": 0
-        },
-        {
-            "_id": "6a43929d754da2da9f5c060a",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title 2",
-            "description": "hey this is shreyash's description 2",
-            "tag": "shreyashs tag 2",
-            "date": "2026-06-30T09:55:41.692Z",
-            "__v": 0
-        },
-        {
-            "_id": "6a4244394456a4c97e279622",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title",
-            "description": "hey this is shreyash's description",
-            "tag": "shreyashs tag",
-            "date": "2026-06-29T10:08:57.414Z",
-            "__v": 0
-        },
-        {
-            "_id": "6a43929d754da2da9f5c060a",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title 2",
-            "description": "hey this is shreyash's description 2",
-            "tag": "shreyashs tag 2",
-            "date": "2026-06-30T09:55:41.692Z",
-            "__v": 0
-        },
-        {
-            "_id": "6a4244394456a4c97e279622",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title",
-            "description": "hey this is shreyash's description",
-            "tag": "shreyashs tag",
-            "date": "2026-06-29T10:08:57.414Z",
-            "__v": 0
-        },
-        {
-            "_id": "6a43929d754da2da9f5c060a",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title 2",
-            "description": "hey this is shreyash's description 2",
-            "tag": "shreyashs tag 2",
-            "date": "2026-06-30T09:55:41.692Z",
-            "__v": 0
-        },
-        {
-            "_id": "6a4244394456a4c97e279622",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title",
-            "description": "hey this is shreyash's description",
-            "tag": "shreyashs tag",
-            "date": "2026-06-29T10:08:57.414Z",
-            "__v": 0
-        },
-        {
-            "_id": "6a43929d754da2da9f5c060a",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title 2",
-            "description": "hey this is shreyash's description 2",
-            "tag": "shreyashs tag 2",
-            "date": "2026-06-30T09:55:41.692Z",
-            "__v": 0
-        },
-        {
-            "_id": "6a4244394456a4c97e279622",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title",
-            "description": "hey this is shreyash's description",
-            "tag": "shreyashs tag",
-            "date": "2026-06-29T10:08:57.414Z",
-            "__v": 0
-        },
-        {
-            "_id": "6a43929d754da2da9f5c060a",
-            "user": "6a4212f69680fc34238402bd",
-            "title": "shreyas title 2",
-            "description": "hey this is shreyash's description 2",
-            "tag": "shreyashs tag 2",
-            "date": "2026-06-30T09:55:41.692Z",
-            "__v": 0
-        }
+        
         ]
         const [notes, setnotes] = useState(notesInitial);
+        //add note
+        const addnote = (title, description, tag)=>{
+            const note = {
+                "_id": "6a430929d754da2da9f5c060a",
+                "user": "6a42012f69680fc34238402b4r",
+                "title": title,
+                "description": description,
+                "tag": tag,
+                "date": "2026-06-30T09:55:41.692Z",
+                "__v": 0
+            } 
+            setnotes(notes.concat(note))
+        }
+        //delete note 
+        const deletenote = ()=>{
+
+        }
+        //edit node
+        const editnote = ()=>{
+
+        }
     return(
-        <NoteContext.Provider value={{notes, setnotes}}>
+        <NoteContext.Provider value={{notes, addnote, deletenote, editnote}}>
             {props.children}
         </NoteContext.Provider>
     )
