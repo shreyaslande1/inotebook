@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react'
-import NoteContext from '../Contexts/NoteContext'
+
 /*this is for learning context api's
 const About = () => {
     const a = useContext(NoteContext)
