@@ -80,7 +80,7 @@ router.post(
 
     async (req, res) => {
         const errors = validationResult(req);
-
+        let success = false
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
@@ -89,12 +89,12 @@ router.post(
         try{
             let user = await  User.findOne({email})
             if(!user){
-                return res.status(400).json({error: "please try to loggin with the correct credential "})
+                return res.status(400).json({success, error: "please try to loggin with the correct credential "})
             }
 
             const passwordcompare = await bcrypt.compare(password, user.password);
             if(!passwordcompare){
-                return res.status(400).json({error: "please try to loggin with the correct credential "})
+                return res.status(400).json({success, error: "please try to loggin with the correct credential "})
             }
 
             // Data to be stored in JWT
@@ -106,9 +106,9 @@ router.post(
 
             // Generate JWT Token
             const authToken = jwt.sign(data, JWT_SECRET);
-
+            success = true
             // Send token to user
-            res.json({ authToken });
+            res.json({success, authToken });
         }catch(error){
             console.error(error.message);
             res.status(500).send("Internal Server Error");

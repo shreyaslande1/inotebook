@@ -52,15 +52,7 @@ const NoteState = (props)=>{
                     body: JSON.stringify({title, description, tag})
                 })
                 
-            const note = {
-                "_id": "6a430929d754da2da9f5c060a",
-                "user": "6a42012f69680fc34238402b4r",
-                "title": title,
-                "description": description,
-                "tag": tag,
-                "date": "2026-06-30T09:55:41.692Z",
-                "__v": 0
-            } 
+            const note = await response.json();
             setnotes(notes.concat(note))
         }
         //delete note 
@@ -83,7 +75,7 @@ const NoteState = (props)=>{
         //edit node
         const editnote = async (id, title, description, tag)=>{
             
-            const response = await fetch(`${host}/api/notes/updatenote/6a430929d754da2da9f5c060a`, {
+            const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type':'application/json',
@@ -91,16 +83,18 @@ const NoteState = (props)=>{
                 },
                 body: JSON.stringify({title, description, tag})
             })
-            const json = response.json()
-            for(let index = 0;i< notes.length; index++){
-                const element = notes[index];
-                if(element._id === id){
-                    element._title = title;
-                    element._description = description;
-                    element._tag= tag;
+            let newNotes = JSON.parse(JSON.stringify(notes));
 
+            for (let index = 0; index < newNotes.length; index++) {
+                if (newNotes[index]._id === id) {
+                    newNotes[index].title = title;
+                    newNotes[index].description = description;
+                    newNotes[index].tag = tag;
+                    break;
                 }
             }
+
+            setnotes(newNotes);
         }
             return(
         <NoteContext.Provider value={{notes, addnote, deletenote, editnote,getallnotes }}>

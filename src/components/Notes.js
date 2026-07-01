@@ -4,20 +4,22 @@ import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 const Notes = () => {
   const context = useContext(NoteContext);
-  const { notes, getallnotes } = context;
+  const { notes, getallnotes, editnote } = context;
   useEffect(() => {
     getallnotes();
   }, []);
 
   const updatenote = (currentnote) => {
     ref.current.click();
-    setnote({etitle:currentnote.title, edescription:currentnote.description, etag:currentnote.tag})
+    setnote({id:currentnote._id, etitle:currentnote.title, edescription:currentnote.description, etag:currentnote.tag})
   };
   const ref = useRef(null);
-  const [note, setnote] = useState({etitle: "", edescription:"", etag: ""});
+  const refclose = useRef(null);
+  const [note, setnote] = useState({id:"", etitle: "", edescription:"", etag: ""});
   const handleonclick = (e)=>{
         console.log("updating the note")
-        e.preventDefault()
+        editnote(note.id, note.etitle, note.edescription, note.etag)
+        refclose.current.click();
        
     }
     const onChange  = (e)=>{
@@ -69,6 +71,7 @@ const Notes = () => {
                     name="etitle"
                     aria-describedby="emailHelp"
                     onChange={onChange}
+                    minLength={5} required
                   />
                 </div>
                 <div className="mb-3">
@@ -82,6 +85,7 @@ const Notes = () => {
                     id="edescription"
                     name="edescription"
                     onChange={onChange}
+                    minLength={5} required
                   />
                 </div>
                 <div className="mb-3">
@@ -101,6 +105,7 @@ const Notes = () => {
             </div>
             <div className="modal-footer">
               <button
+                ref={refclose}
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
@@ -117,6 +122,10 @@ const Notes = () => {
 
       <div className="row my-3">
         <h1>Your notes</h1>
+        <div className="container mx-2">
+
+        {notes.length===0 && 'No notes to display' }
+        </div>
         {notes.map((note) => {
           return (
             <NoteItem key={note._id} updatenote={updatenote} note={note} />
