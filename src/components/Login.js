@@ -5,30 +5,30 @@ const Login = (props) => {
     let navigate = useNavigate();
     const handlesubmit = async (e)=>{
         e.preventDefault()
-        const login = await fetch("http://localhost:5000/api/auth/login",{
+        const login = await fetch("https://inotebookbyshreyas.onrender.com/api/auth/login",{
             method: 'POST',
             headers: {
                 'Content-Type':'application/json',
-                "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNmE0MjEyZjY5NjgwZmMzNDIzODQwMmJkIn0sImlhdCI6MTc4MjcxNTEyNn0.lWwWver03m4ckJAniN2FkHnZiJUtH_9I-X6Aj5rIMGc"
             },
             body: JSON.stringify({email:credentials.email, password:credentials.password})
         })
-        const json = await login.json()
-        console.log(json)
-        if(json.success){
-            //redirect
-            localStorage.setItem('token', json.authtoken)
-            navigate('/')
-            props.showalert("logged in successfully", "success")
-        }else{
-            props.showalert("invalid credentials", "danger")
+        
+        const json = await login.json();
+    console.log("LOGIN RESPONSE:", json);
+        if (json.success) {
+            localStorage.setItem('token', json.authToken);
+            props.showalert("logged in successfully", "success");
+            navigate('/');
+        } else {
+            props.showalert("invalid credentials", "danger");
         }
     }
     const onchange = (e)=>{
         setcredentials({...credentials, [e.target.name]: e.target.value})
     }
   return (
-    <div>
+    <div className='mt-3'>
+        <h2>Login to continue to iNotebook</h2>
       <form onSubmit={handlesubmit}>
         <div className="mb-3">
             <label htmlFor="email" className="form-label">Email address</label>

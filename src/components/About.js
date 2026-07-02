@@ -14,7 +14,10 @@ const About = () => {
 }*/
 const About = ()=>{
     return (
-        <></>
+        <>
+          <h1>about me</h1>
+          <p>hey i am shreyas, i have created this project while learning react</p>
+        </>
     )
 }
 export default About

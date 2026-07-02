@@ -10,7 +10,7 @@ const Signup = (props) => {
             return;
         }
         const {name, email, password} = credentials;
-        const login = await fetch("http://localhost:5000/api/auth/createuser",{
+        const login = await fetch("https://inotebookbyshreyas.onrender.com/api/auth/createuser",{
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
@@ -32,7 +32,7 @@ const Signup = (props) => {
         setcredentials({...credentials, [e.target.name]: e.target.value})
     }
   return (
-    <div className='container'>
+    <div className='container mt-3'>
       <form onSubmit={handlesubmit}>
         <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>
