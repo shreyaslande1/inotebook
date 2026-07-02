@@ -21,17 +21,17 @@ const AddNote = (props) => {
       <form>
         <div className="mb-3">
             <label htmlFor="title" className="form-label">Title</label>
-            <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={onChange} minLength={5} required value={note.title}/>
+            <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={onChange} minLength={1} required value={note.title}/>
         </div>
         <div className="mb-3">
             <label htmlFor="description" className="form-label">description</label>
-            <input type="text" className="form-control" id="description" name="description" onChange={onChange} minLength={5} required value={note.description}/>
+            <input type="text" className="form-control" id="description" name="description" onChange={onChange} minLength={1} required value={note.description}/>
         </div>
         <div className="mb-3">
             <label htmlFor="tag" className="form-label">Tag</label>
-            <input type="text" className="form-control" id="tag" name="tag" onChange={onChange} minLength={5} required value={note.tag}/>
+            <input type="text" className="form-control" id="tag" name="tag" onChange={onChange} minLength={1} required value={note.tag}/>
         </div>
-        <button disabled ={note.title.length<5 || note.description.length<5 || note.tag.length<5} type="submit" className="btn btn-primary" onClick={handleonclick}>Add Note</button>
+        <button disabled ={note.title.length<1 || note.description.length<1 || note.tag.length<1} type="submit" className="btn btn-primary" onClick={handleonclick}>Add Note</button>
         </form>
       
       </div>

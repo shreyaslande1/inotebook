@@ -6,7 +6,7 @@ const Navbar = () => {
     const navigate = useNavigate()
    const handlelogout = ()=>{
     localStorage.removeItem('token')
-    navigate('/signup')
+    navigate('/login')
    }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
