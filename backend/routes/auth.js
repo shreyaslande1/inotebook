@@ -5,7 +5,7 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fetchUser = require("../middleware/fetchUser")
-const JWT_SECRET = "thisismysecretkey";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Create a user using POST "/api/auth/createuser"
 // Doesn't require authentication
