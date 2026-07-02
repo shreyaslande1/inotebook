@@ -13,6 +13,7 @@ const NoteItem = (props) => {
             <button className="mx-3"
               onClick={() => {
                 deletenote(note._id);
+                props.showalert("deleted successfully", "success")
               }}
             >
               <i className="fa-solid fa-trash-can "></i>
@@ -20,6 +21,7 @@ const NoteItem = (props) => {
             <button
               onClick={() => {
                 updatenote(note)
+                
               }}
             >
             <i className="fa-regular fa-pen-to-square mx-2"></i>

@@ -18,12 +18,12 @@ router.post(
     ],
 
     async (req, res) => {
-
+        let success = false;
         // Check for validation errors
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({success, errors: errors.array() });
         }
 
         try {
@@ -59,9 +59,9 @@ router.post(
 
             // Generate JWT Token
             const authToken = jwt.sign(data, JWT_SECRET);
-
+            success = true
             // Send token to user
-            res.json({ authToken });
+            res.json({success, authToken });
 
         } catch (error) {
             console.error(error.message);
