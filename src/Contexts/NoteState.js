@@ -23,6 +23,7 @@ import NoteContext from "./NoteContext";
 //  }
 const NoteState = (props) => {
   const host = "https://inotebookbyshreyas.onrender.com";
+  
   const notesInitial = [];
   const [notes, setnotes] = useState(notesInitial);
   const getallnotes = async () => {
