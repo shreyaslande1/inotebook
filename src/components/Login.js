@@ -5,7 +5,7 @@ const Login = (props) => {
     let navigate = useNavigate();
     const handlesubmit = async (e)=>{
         e.preventDefault()
-        const login = await fetch("https://inotebookbyshreyas.onrender.com/api/auth/login",{
+        const login = await fetch("https://inotebook-backend-qa9x.onrender.com/api/auth/login",{
             method: 'POST',
             headers: {
                 'Content-Type':'application/json',

@@ -10,7 +10,7 @@ const Signup = (props) => {
             return;
         }
         const {name, email, password} = credentials;
-        const login = await fetch("https://inotebookbyshreyas.onrender.com/api/auth/createuser",{
+        const login = await fetch("https://inotebook-backend-qa9x.onrender.com/api/auth/createuser",{
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'

@@ -22,7 +22,7 @@ import NoteContext from "./NoteContext";
 //     )
 //  }
 const NoteState = (props) => {
-  const host = "https://inotebookbyshreyas.onrender.com";
+  const host = "https://inotebook-backend-qa9x.onrender.com";
   
   const notesInitial = [];
   const [notes, setnotes] = useState(notesInitial);
