@@ -17,3 +17,10 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);
 });
+
+app.get("/", (req, res) => {
+    res.json({ message: "Backend working 🚀" });
+});
+app.get('/', (req, res) => {
+  res.send('iNotebook Backend API is running smoothly!');
+});
